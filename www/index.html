@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B2536">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Industrial wastewater treatment plant design tool: 21 treatment stages, mass balance, hydraulic profile and engineering report.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="WWTP Design">
+<title>Industrial WWTP Design Suite</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="titleblock">
+  <div class="tb-left">
+    <div class="tb-logo" id="tbInitials">AE</div>
+    <div class="tb-title">
+      <h1>Industrial WWTP Design Suite</h1>
+      <div class="tb-sign"><span class="nm" id="tbName"></span><span class="dp" id="tbDept"></span></div>
+    </div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-proj">
+      <button class="proj-btn" id="projBtn" onclick="ProjectsUI.openModal()" aria-label="Projects">
+        <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span id="projTitle">Untitled Project</span>
+      </button>
+      <span class="save-status" id="saveStatus"></span>
+    </div>
+    <div class="doc-no">Doc No: <b id="docNoText"></b><br>Rev: <b id="docRev">A</b> — <span id="docDate"></span></div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="main">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="calc">Detailed Calculations</button>
+      <button class="tab-btn" data-tab="hydraulic">Hydraulic Profile</button>
+      <button class="tab-btn" data-tab="massbalance">Mass Balance</button>
+      <button class="tab-btn" data-tab="report">Final Report</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-calc">
+      <div class="summary-strip" id="summaryStrip"></div>
+      <div class="legend-line"><span><i style="background:#FFFBEE;border:1px solid #E6D49A"></i>Yellow fields = your inputs</span><span><i style="background:#E8F3EE;border:1px solid #BFDCCF"></i>Table values = calculated results</span></div>
+      <div id="checksBox"></div>
+      <div id="unitCards"></div>
+    </div>
+
+    <div class="tab-panel" id="panel-hydraulic">
+      <div class="hp-wrap">
+        <div id="hpSvgHolder"></div>
+        <div class="hp-legend">
+          <span><i style="background:var(--teal)"></i> Water level</span>
+          <span><i style="background:var(--ink)"></i> Unit / Stage</span>
+          <span><i style="background:var(--amber)"></i> Head loss (est.)</span>
+        </div>
+        <div class="note">The hydraulic profile is schematic, based on typical assumed level differences for each unit — it must be verified against actual site levels (site survey) before construction.</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-massbalance">
+      <div id="mbHolder"></div>
+    </div>
+
+    <div class="tab-panel" id="panel-report">
+      <div class="report-toolbar">
+        <button class="btn teal" id="btnPdf" onclick="ReportPDF.exportPDF()">⬇ Export PDF</button>
+        <button class="btn secondary" id="btnPrint" onclick="window.print()">🖨 Print</button>
+        <button class="btn secondary" onclick="switchTab('calc')">Back to Calculations</button>
+      </div>
+      <div class="report-doc" id="reportDoc"></div>
+    </div>
+  </div>
+</div>
+
+<nav class="bottomnav" id="bottomNav">
+  <button data-go="inputs"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Inputs</button>
+  <button data-go="calc" class="active"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h2M16 12h0M8 16h2M12 16h2M16 16h0"/></svg>Design</button>
+  <button data-go="hydraulic"><svg viewBox="0 0 24 24"><path d="M3 7h5l3 5h4l3 5h3"/><path d="M3 20h18"/></svg>Profile</button>
+  <button data-go="massbalance"><svg viewBox="0 0 24 24"><path d="M12 4v16M6 8h12M6 8l-3 6a3 3 0 0 0 6 0zM18 8l-3 6a3 3 0 0 0 6 0z"/></svg>Balance</button>
+  <button data-go="report"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>Report</button>
+</nav>
+
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="vendor/jspdf.plugin.autotable.min.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/native.js"></script>
+<script src="js/store.js"></script>
+<script src="js/projects.js"></script>
+<script src="js/pdf.js"></script>
+<script src="js/boot.js"></script>
+</body>
+</html>

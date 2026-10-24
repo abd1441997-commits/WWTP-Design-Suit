@@ -1,0 +1,39 @@
+{
+  "name": "industrial-wwtp-design-suite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Industrial WWTP Design Suite - Capacitor (Android/iOS) + PWA",
+  "scripts": {
+    "test": "node tests/run-tests.js",
+    "vendor": "node scripts/copy-vendor.js",
+    "assets": "node scripts/make-assets.js",
+    "sync": "npx cap sync",
+    "android": "npx cap sync android && npx cap open android",
+    "ios": "npx cap sync ios && npx cap open ios",
+    "serve": "node scripts/serve.js",
+    "build": "node scripts/copy-vendor.js && node scripts/build-sw.js",
+    "prepare-native": "npm run build && npx cap sync"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/filesystem": "^8.1.5",
+    "@capacitor/ios": "^8.5.3",
+    "@capacitor/keyboard": "^8.0.6",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/share": "^8.0.3",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.4",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.9"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^8.5.3",
+    "jsdom": "^30.1.3",
+    "sharp": "^0.35.5"
+  }
+}

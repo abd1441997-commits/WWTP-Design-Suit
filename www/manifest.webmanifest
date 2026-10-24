@@ -1,0 +1,19 @@
+{
+  "name": "Industrial WWTP Design Suite",
+  "short_name": "WWTP Design",
+  "description": "Industrial wastewater treatment plant design: 21 treatment stages, mass balance, hydraulic profile and engineering report.",
+  "id": "com.elwishy.wwtpdesign",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0B2536",
+  "theme_color": "#0B2536",
+  "lang": "en",
+  "categories": ["productivity", "utilities", "business"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

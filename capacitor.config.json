@@ -1,0 +1,38 @@
+{
+  "appId": "com.elwishy.wwtpdesign",
+  "appName": "Industrial WWTP Design Suite",
+  "webDir": "www",
+  "backgroundColor": "#0B2536",
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#0B2536",
+    "scrollEnabled": true
+  },
+  "android": {
+    "backgroundColor": "#0B2536",
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "backgroundColor": "#0B2536",
+      "showSpinner": false,
+      "androidScaleType": "CENTER_CROP",
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "StatusBar": {
+      "style": "DARK"
+    },
+    "Keyboard": {
+      "resize": "body",
+      "resizeOnFullScreen": true
+    },
+    "SystemBars": {
+      "insetsHandling": "css",
+      "style": "DARK",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
+}
